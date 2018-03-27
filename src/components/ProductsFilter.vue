@@ -2,7 +2,7 @@
   <div class="products-filter">
     <label>
       <span class="products-filter__label">{{label}}</span>
-      <select class="products-filter__select" v-model="selected" :disabled="isEmpty">
+      <select class="products-filter__select" v-model="selectedOption" :disabled="isEmpty">
         <option :value="null">{{prompt}}</option>
         <option v-for="option in options" :key="option.id" :value="option[value]">{{option[value]}}</option>
       </select>
@@ -69,11 +69,14 @@ export default {
     },
   },
   watch: {
-    selected() {
+    selectedOption() {
       const payload = {};
-      payload[this.name] = this.selected;
+      payload[this.name] = this.selectedOption;
 
       this.$emit('changed', payload);
+    },
+    selected() {
+      this.selectedOption = this.selected;
     },
   },
 };
