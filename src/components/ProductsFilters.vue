@@ -6,12 +6,14 @@
       name="size"
       label="Tamanho"
       value="size"
+      :selected="size"
       :options="sizes"
       @changed="sizeChanged" />
     <products-filter
       name="brand"
       label="Marca"
       value="name"
+      :selected="brand"
       :options="brands"
       @changed="brandChanged"/>
   </aside>
@@ -39,7 +41,7 @@ export default {
     ...mapActions(['getBrands', 'getSizes'])
   },
   computed: {
-    ...mapState(['brands', 'sizes'])
+    ...mapState(['brand', 'brands', 'size', 'sizes'])
   },
   components: {
     ProductsFilter,
@@ -47,6 +49,6 @@ export default {
   created() {
     this.getBrands();
     this.getSizes();
-  }
+  },
 };
 </script>

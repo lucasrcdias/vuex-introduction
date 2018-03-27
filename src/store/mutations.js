@@ -14,4 +14,8 @@ export default {
   setProducts(state, payload) {
     state.products = payload.products;
   },
+  clearFilters(state) {
+    state.brand = null;
+    state.size = null;
+  },
 };

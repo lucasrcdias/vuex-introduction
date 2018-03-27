@@ -2,7 +2,7 @@
   <div class="products-filter">
     <label>
       <span class="products-filter__label">{{label}}</span>
-      <select class="products-filter__select" v-model="selectedOption" :disabled="isEmpty">
+      <select class="products-filter__select" v-model="selected" :disabled="isEmpty">
         <option :value="null">{{prompt}}</option>
         <option v-for="option in options" :key="option.id" :value="option[value]">{{option[value]}}</option>
       </select>
@@ -49,6 +49,11 @@ export default {
       required: true,
       default: '',
     },
+    selected: {
+      type: String,
+      required: false,
+      default: null,
+    },
     options: {
       type: Array,
       required: true,
@@ -64,12 +69,12 @@ export default {
     },
   },
   watch: {
-    selectedOption() {
+    selected() {
       const payload = {};
-      payload[this.name] = this.selectedOption;
+      payload[this.name] = this.selected;
 
       this.$emit('changed', payload);
-    }
+    },
   },
 };
 </script>

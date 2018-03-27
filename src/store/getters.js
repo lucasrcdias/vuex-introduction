@@ -8,4 +8,7 @@ export default {
       return !state.size || state.size === product.size;
     });
   },
+  hasFilters(state) {
+    return state.brand || state.size;
+  },
 };
